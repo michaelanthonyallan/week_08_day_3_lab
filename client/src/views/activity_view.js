@@ -7,12 +7,11 @@ const ActivityView = function (container) {
 ActivityView.prototype.render = function (activity) {
   const activityContainer = document.createElement('div');
   activityContainer.id = 'activity';
-
-  const name = this.createHeading(activity.name);
+  const name = this.createHeading(`${activity.name} - ${activity.status}`);
   activityContainer.appendChild(name);
 
-  const status = this.createHeading(activity.status);
-  activityContainer.appendChild(status);
+  // const status = this.createHeading(activity.status);
+  // activityContainer.appendChild(status);
 
   const deleteButton = this.createDeleteButton(activity._id);
   activityContainer.appendChild(deleteButton);

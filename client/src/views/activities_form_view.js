@@ -19,7 +19,8 @@ ActivityFormView.prototype.handleSubmit = function (evt) {
 
 ActivityFormView.prototype.createActivity = function (form) {
   const newActivity = {
-    name: form.name.value
+    name: form.name.value,
+    status: "Not Complete"
   };
 
   return newActivity;

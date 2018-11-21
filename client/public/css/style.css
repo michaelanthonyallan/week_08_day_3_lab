@@ -1,0 +1,25 @@
+
+
+h3{
+font-family: 'Amatic SC', cursive;
+font-size: 28px;
+}
+
+h1{
+  font-family: 'Overlock', cursive;
+  font-size: 54px;
+}
+h2{
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 32px;
+}
+
+.delete-btn, .update-btn{
+  font-family: 'Overlock', cursive;
+  font-size: 16px;
+}
+
+body{
+  text-align: center;
+  background-image: radial-gradient(circle, #568de1, #4994e5, #3a9ae8, #2aa0ea, #12a6eb);
+}
