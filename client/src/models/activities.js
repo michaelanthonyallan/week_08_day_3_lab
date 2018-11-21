@@ -21,6 +21,9 @@ Activities.prototype.bindEvents = function () {
   PubSub.subscribe('ActivityView:activity-submitted', (evt) => {
     this.postActivity(evt.detail);
   })
+  PubSub.subscribe('ActivityView:activity-update-clicked', (evt) => {
+    this.updateActivity(evt.detail);
+  })
 };
 Activities.prototype.postActivity = function (activity) {
   const request = new Request(this.url);
@@ -38,6 +41,15 @@ Activities.prototype.deleteActivity = function (activityId) {
       PubSub.publish('Activities:data-loaded', activities);
     })
     .catch(console.error);
+};
+
+Activities.prototype.updateActivity = function(activityId){
+  const request = new Request(this.url);
+  request.put(activityId, {status: "Complete"})
+  .then((activities) => {
+    PubSub.publish('Activities:data-loaded', activities);
+  })
+  .catch(console.error);
 };
 
 module.exports = Activities;

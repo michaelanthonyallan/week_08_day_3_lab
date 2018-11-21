@@ -11,8 +11,14 @@ ActivityView.prototype.render = function (activity) {
   const name = this.createHeading(activity.name);
   activityContainer.appendChild(name);
 
+  const status = this.createHeading(activity.status);
+  activityContainer.appendChild(status);
+
   const deleteButton = this.createDeleteButton(activity._id);
   activityContainer.appendChild(deleteButton);
+
+  const updateButton = this.createUpdateButton(activity._id);
+  activityContainer.appendChild(updateButton);
 
   this.container.appendChild(activityContainer);
 };
@@ -37,6 +43,19 @@ ActivityView.prototype.createDeleteButton = function (activityId) {
 
   button.addEventListener('click', (evt) => {
     PubSub.publish('ActivityView:activity-delete-clicked', evt.target.value);
+  });
+
+  return button;
+};
+
+ActivityView.prototype.createUpdateButton = function(activityId) {
+  const button = document.createElement('button');
+  button.classList.add('update-btn');
+  button.value = activityId;
+  button.textContent = 'Mark Complete';
+
+  button.addEventListener('click', (evt) => {
+    PubSub.publish('ActivityView:activity-update-clicked', evt.target.value);
   });
 
   return button;
